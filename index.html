@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matheus Silva Gino — Desenvolvedor de Software</title>
+<meta name="description" content="Portfólio de Matheus Silva Gino, Desenvolvedor Full Stack especializado em Java, Spring Boot e Next.js.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+@keyframes fadeSlideIn {
+0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+100% { opacity: 1; transform: translateY(0); filter: blur(0px); }
+}
+@keyframes portraitFall {
+0% { opacity: 0; transform: translateY(-200px) scale(0.5) rotate(-10deg); filter: blur(4px); }
+60% { opacity: 1; transform: translateY(8px) scale(1.05) rotate(2deg); filter: blur(0px); }
+80% { transform: translateY(-4px) scale(0.98) rotate(-1deg); }
+100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); filter: blur(0px); }
+}
+.animate-on-scroll { animation-play-state: paused !important; }
+.animate-on-scroll.animate { animation-play-state: running !important; }
+.border-gradient { position: relative; }
+.border-gradient::before {
+content: "";
+position: absolute;
+inset: 0;
+border-radius: inherit;
+padding: 1px;
+-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+mask-composite: exclude;
+background: linear-gradient(225deg, rgba(255, 255, 255, 0.0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.0) 100%);
+}
+.gradient-blur { position: fixed; z-index: 5; inset: auto 0 0 0; height: 45%; pointer-events: none; }
+.gradient-blur>div { position: absolute; inset: 0; }
+.gradient-blur::before {
+content: ""; position: absolute; inset: 0; z-index: 1; backdrop-filter: blur(0.5px);
+mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 37.5%);
+}
+.gradient-blur>div:nth-of-type(1) { z-index: 2; backdrop-filter: blur(1px); mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 12.5%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 0) 50%); }
+.gradient-blur>div:nth-of-type(2) { z-index: 3; backdrop-filter: blur(2px); mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 1) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 62.5%); }
+.gradient-blur>div:nth-of-type(3) { z-index: 4; backdrop-filter: blur(4px); mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 37.5%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 0) 75%); }
+.gradient-blur>div:nth-of-type(4) { z-index: 5; backdrop-filter: blur(8px); mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 87.5%); }
+.gradient-blur>div:nth-of-type(5) { z-index: 6; backdrop-filter: blur(16px); mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 62.5%, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 0) 100%); }
+.gradient-blur>div:nth-of-type(6) { z-index: 7; backdrop-filter: blur(32px); mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 1) 87.5%, rgba(0, 0, 0, 1) 100%); }
+.gradient-blur::after { content: ""; position: absolute; inset: 0; z-index: 8; backdrop-filter: blur(64px); mask: linear-gradient(to bottom, rgba(0, 0, 0, 0) 87.5%, rgba(0, 0, 0, 1) 100%); }
+.portfolio-item { position: relative; overflow: hidden; cursor: pointer; }
+.portfolio-item video { transition: transform 0.6s ease, filter 0.4s ease; }
+.portfolio-item:hover video { transform: scale(1.05); filter: brightness(1.1); }
+.portfolio-item img { transition: transform 0.6s ease, filter 0.4s ease; }
+.portfolio-item:hover img { transform: scale(1.05); filter: brightness(1.1); }
+.portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%); opacity: 0; transition: opacity 0.4s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; }
+.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+.filter-btn { transition: all 0.3s ease; }
+.filter-btn.active { background: rgba(139, 92, 246, 0.2); color: rgb(167, 139, 250); border-color: rgba(167, 139, 250, 0.5); }
+@keyframes word-reveal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.type-words { --stagger:.2s; --dur:2s; --ease:ease-in-out; --delay:0s; }
+.type-words .w { display:inline-block; opacity:0; animation: word-reveal var(--dur) var(--ease) forwards; animation-delay: calc(var(--delay) + var(--i) * var(--stagger)); }
+.type-words:not(.is-in) .w { animation-name:none; }
+@keyframes shimmer { 0% { background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.18) 8%, transparent 16%) -30% 0/250% 100% repeat; } 100%{ background-position: 130% 0; } }
+.animate-shimmer-mask { position: relative; -webkit-mask: linear-gradient(90deg, transparent 0, #000 20%, #000 80%, transparent var(--shine,200%)) 0 0/200% 100% no-repeat; mask: linear-gradient(90deg, transparent 0, #000 20%, #000 80%, transparent var(--shine,200%)) 0 0/200% 100% repeat; animation: shimmer-mask 2.8s ease-in-out 1s both; }
+@keyframes shimmer-mask { to { -webkit-mask-position: 200% 0; mask-position: 200% 0; } }
+section { opacity: 1; transform: translateY(0); transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1), filter 0.8s cubic-bezier(0.4, 0, 0.2, 1); will-change: opacity, transform, filter; }
+section.section-visible { opacity: 1; transform: translateY(0); filter: blur(0px); }
+section.section-exiting { filter: blur(4px); transition: filter 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+section:first-of-type { opacity: 1; transform: translateY(0); }
+.video-thumbnail { position: relative; width: 100%; height: 100%; background: #000; }
+.video-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.3s ease; z-index: 2; }
+.portfolio-item:hover .video-play-btn { background: rgba(0,0,0,0.5); }
+.carousel-video { width: 100%; height: 100%; object-fit: cover; }
+</style>
+</head>
+<body class="antialiased text-white bg-black" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial">
+
+<div class="top-0 w-full -z-10 absolute h-screen">
+  <div class="absolute w-full h-full left-0 top-0 -z-10" data-us-project="aH0ZsntZ1TcKHIyweEA8"></div>
+  <script type="text/javascript">
+    !function(){var u=window.UnicornStudio;if(u&&u.init){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){u.init()})}else{u.init()}}else{window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.1/dist/unicornStudio.umd.js",i.onload=function(){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){UnicornStudio.init()})}else{UnicornStudio.init()}},(document.head||document.body).appendChild(i)}}();
+  </script>
+</div>
+
+<div class="gradient-blur">
+  <div></div><div></div><div></div><div></div>
+</div>
+
+<div class="overflow-hidden relative">
+  <header class="fixed z-20 bg-black/50 w-full top-0 backdrop-blur-xl" style="animation: fadeSlideIn 0.5s ease-in-out 0.1s both">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="flex items-center justify-between py-6 border-b border-white/[0.06]">
+        <a href="#" class="flex items-center gap-3">
+          <span class="text-xl font-semibold tracking-tight">Matheus Silva Gino</span>
+        </a>
+        <button class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition ml-auto" id="mobile-menu-toggle" aria-label="Toggle menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <nav class="hidden lg:flex items-center gap-8 text-sm text-white/70">
+          <a href="#portfolio" class="hover:text-white transition">Portfólio</a>
+          <a href="#about" class="hover:text-white transition">Sobre</a>
+          <a href="#services" class="hover:text-white transition">Serviços</a>
+          <a href="#process" class="hover:text-white transition">Processo</a>
+          <a href="#contact" class="hover:text-white transition">Contato</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="#contact" class="group inline-flex min-w-[140px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-105 border-gradient hover:text-white gap-2 text-sm font-medium text-white/80 tracking-tight bg-white/5 rounded-full pt-3 pr-5 pb-3 pl-5 relative backdrop-blur-xl gap-x-2 gap-y-2 items-center justify-center hidden md:inline-flex">
+            Contrate-me
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+      <nav id="mobile-menu" class="lg:hidden hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 overflow-hidden" style="max-height: 0; transition: max-height 0.3s ease-in-out;">
+        <div class="flex flex-col p-6 space-y-4">
+          <a href="#portfolio" class="text-base text-white/70 hover:text-white transition py-2">Portfólio</a>
+          <a href="#about" class="text-base text-white/70 hover:text-white transition py-2">Sobre</a>
+          <a href="#services" class="text-base text-white/70 hover:text-white transition py-2">Serviços</a>
+          <a href="#process" class="text-base text-white/70 hover:text-white transition py-2">Processo</a>
+          <a href="#contact" class="text-base text-white/70 hover:text-white transition py-2">Contato</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="min-h-screen flex flex-col section-visible text-center pt-0 pr-6 pb-24 pl-6 relative items-center justify-center xl:pt-0 xl:pb-0">
+    <div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 backdrop-blur-sm text-white/80 ring-1 ring-white/10 animate-badge">
+      <i data-lucide="code-2" class="w-4 h-4"></i>
+      <span>Desenvolvedor Full Stack</span>
+    </div>
+
+    <h1 class="leading-[0.95] font-semibold text-white tracking-tight mt-0 mb-0 pt-24 pb-12" style="animation: fadeSlideIn 1.8s ease-out both;">
+      <span class="block text-[8vw] sm:text-6xl lg:text-7xl flex items-center justify-center gap-4 sm:gap-6">
+        <img src="./media/foto_profissional.jpeg" alt="Matheus Silva Gino" class="w-[10vw] h-[10vw] sm:w-[70px] sm:h-[70px] lg:w-[90px] lg:h-[90px] rounded-full object-cover border-2 border-white/20 shadow-2xl" style="animation: portraitFall 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both">
+        Desenvolvendo
+      </span>
+      <span class="block text-[8vw] sm:text-6xl lg:text-7xl text-white/80 animate-shimmer-mask [--shine:220%]">
+        soluções
+      </span>
+      <span class="block text-[8vw] sm:text-6xl lg:text-7xl">modernas</span>
+    </h1>
+
+    <p class="max-w-3xl mx-auto text-lg md:text-xl text-white/80 type-words is-in" data-stagger=".1s" data-duration="1.5s" data-ease="ease-in-out" data-delay=".4s">
+      Especializado em Java, Spring Boot, TypeScript e Next.js. Transformando requisitos complexos em sistemas robustos e interfaces acessíveis.
+    </p>
+
+    <div class="mt-10 flex items-center justify-center gap-4">
+      <a href="#portfolio" class="relative inline-flex items-center justify-center gap-2 overflow-hidden transition-all duration-300 hover:ring-sky-400/60 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.35),0_40px_80px_rgba(56,189,248,0.18)] group ring-[#ffffff]/30 ring-1 text-base font-semibold text-white tracking-tight bg-neutral-950/95 rounded-full pt-3 pr-6 pb-3 pl-6 shadow-[0_0_0_1px_rgba(56,189,248,0.25),inset_0_0_0_1px_rgba(255,255,255,0.08)]">
+        <span class="z-[1] group-hover:translate-x-1 transition-transform duration-300 relative">Ver Projetos</span>
+      </a>
+      <a href="#contact" class="group inline-flex min-w-[140px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-105 border-gradient hover:text-white text-sm font-medium text-white/80 tracking-tight bg-white/5 rounded-full pt-3 pr-5 pb-3 pl-5 relative backdrop-blur-xl gap-x-2 gap-y-2 items-center justify-center">
+        <span class="relative">Contato</span>
+      </a>
+    </div>
+
+    <div class="flex flex-wrap xl:py-24 text-xs text-white/60 mt-8 pt-24 pb-24 gap-x-6 gap-y-6 items-center justify-center" style="animation: fadeSlideIn 0.5s ease-in-out 0.5s both">
+      <span class="inline-flex items-center gap-1.5"><i data-lucide="clock" class="w-4 h-4"></i> 3+ Anos de Experiência</span>
+      <span class="inline-flex items-center gap-1.5"><i data-lucide="briefcase" class="w-4 h-4"></i> 15+ Projetos Entregues</span>
+      <span class="inline-flex items-center gap-1.5"><i data-lucide="users" class="w-4 h-4"></i> 100% Clientes Satisfeitos</span>
+    </div>
+  </section>
+</div>
+
+<div class="relative mt-12 md:mt-16" id="portfolio">
+  <section data-section="" class="xl:pt-24 pt-32 pb-32">
+    <div class="container max-w-7xl mr-auto ml-auto pr-6 pl-6 relative">
+      <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn 0.5s ease-in-out 0.1s both">
+        <h2 class="md:text-6xl text-4xl font-semibold text-white tracking-tight mt-5 drop-shadow-xl">Em Destaque</h2>
+        <p class="text-base md:text-lg text-white/70 mt-4">Uma seleção dos meus melhores trabalhos acadêmicos e profissionais.</p>
+      </div>
+
+      <div class="relative">
+        <div class="flex snap-x snap-mandatory overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] md:gap-8 md:scroll-px-8 md:pt-16 md:px-8 max-w-7xl pt-6 pr-8 pb-6 pl-8 gap-x-6 gap-y-x-6" id="work-carousel">
+          
+          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 bg-neutral-900/40">
+            <video class="carousel-video" poster="./media/foto_profissional.jpeg" muted loop playsinline>
+              <source src="./projetos/nexus.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
+              <div class="flex items-center gap-2 text-[11px] md:text-xs text-white/70">
+                <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-lime-400/20 ring-1 ring-lime-300/30">
+                  <i data-lucide="layout" class="h-3.5 w-3.5 text-lime-300"></i>
+                </span>
+                UI Design • Gestão
+              </div>
+              <div class="mt-2.5 flex items-end justify-between gap-3">
+                <div>
+                  <h3 class="text-xl md:text-2xl lg:text-[28px] font-semibold tracking-tight">Nexus</h3>
+                  <p class="text-sm md:text-base text-white/70">Interface limpa para gestão de gastos</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 bg-neutral-900/40">
+            <video class="carousel-video" poster="./media/foto_profissional.jpeg" muted loop playsinline>
+              <source src="./projetos/lp_xadascinco.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
+              <div class="flex items-center gap-2 text-[11px] md:text-xs text-white/70">
+                <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-400/20 ring-1 ring-orange-300/30">
+                  <i data-lucide="monitor" class="h-3.5 w-3.5 text-orange-300"></i>
+                </span>
+                Web Dev • Marketing
+              </div>
+              <div class="mt-2.5 flex items-end justify-between gap-3">
+                <div>
+                  <h3 class="text-xl md:text-2xl lg:text-[28px] font-semibold tracking-tight">Landing Page Comercial</h3>
+                  <p class="text-sm md:text-base text-white/70">Portfólio para empresa de marketing</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 bg-neutral-900/40">
+            <video class="carousel-video" poster="./media/foto_profissional.jpeg" muted loop playsinline>
+              <source src="./projetos/zenit.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
+              <div class="flex items-center gap-2 text-[11px] md:text-xs text-white/70">
+                <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-purple-400/20 ring-1 ring-purple-300/30">
+                  <i data-lucide="shield-check" class="h-3.5 w-3.5 text-purple-300"></i>
+                </span>
+                Back-end • Segurança
+              </div>
+              <div class="mt-2.5 flex items-end justify-between gap-3">
+                <div>
+                  <h3 class="text-xl md:text-2xl lg:text-[28px] font-semibold tracking-tight">Sistema ZENIT</h3>
+                  <p class="text-sm md:text-base text-white/70">Sistema complexo back-end de prevenção de fraudes (PIX)</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10"></div>
+        <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  #work-carousel::-webkit-scrollbar{ display:none; }
+</style>
+
+<section class="z-10 xl:py-12 relative">
+  <div class="container lg:px-8 max-w-7xl mr-auto ml-auto pr-6 pl-6">
+    
+    <div class="flex flex-wrap gap-3 mt-4 animate-on-scroll" style="animation: fadeSlideIn 0.5s ease-in-out 0.15s both">
+      <button class="filter-btn active px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/80 hover:bg-white/10 transition" data-filter="all">Todos</button>
+      <button class="filter-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/60 hover:bg-white/10 transition" data-filter="web">Web Dev</button>
+      <button class="filter-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/60 hover:bg-white/10 transition" data-filter="backend">Back-end</button>
+      <button class="filter-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-white/60 hover:bg-white/10 transition" data-filter="ui">UI Design</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10" id="portfolio-grid">
+      <div class="portfolio-item rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="ui">
+        <video class="w-full aspect-square object-cover" poster="./media/foto_profissional.jpeg" muted loop playsinline>
+          <source src="./projetos/nexus.mp4" type="video/mp4">
+        </video>
+        <div class="portfolio-overlay">
+          <h3 class="text-lg font-semibold">Nexus</h3>
+          <p class="text-xs text-white/60 mt-1">Gestão de gastos</p>
+          <div class="flex gap-2 mt-3">
+            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">Figma</span>
+            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">Tailwind</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="web">
+        <video class="w-full aspect-square object-cover" poster="./media/foto_profissional.jpeg" muted loop playsinline>
+          <source src="./projetos/lp_xadascinco.mp4" type="video/mp4">
+        </video>
+        <div class="portfolio-overlay">
+          <h3 class="text-lg font-semibold">Marketing Landing Page</h3>
+          <p class="text-xs text-white/60 mt-1">E-commerce e Institucional</p>
+          <div class="flex gap-2 mt-3">
+            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">React</span>
+            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">Next.js</span>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="backend">
+        <video class="w-full aspect-square object-cover" poster="./media/foto_profissional.jpeg" muted loop playsinline>
+          <source src="./projetos/zenit.mp4" type="video/mp4">
+        </video>
+        <div class="portfolio-overlay">
+          <h3 class="text-lg font-semibold">ZENIT</h3>
+          <p class="text-xs text-white/60 mt-1">Sistema Antifraude PIX</p>
+          <div class="flex gap-2 mt-3">
+            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">Java</span>
+            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">Spring Boot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="z-10 xl:py-24 bg-center mt-12 pt-12 pb-12 relative" id="about">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid gap-10 lg:grid-cols-12 items-start">
+      <div class="lg:col-span-5 relative overflow-hidden rounded-2xl" style="height:600px;">
+        <div class="about-image-container absolute inset-0">
+          <img src="./media/matheus-portrait.jpg.jpeg" class="about-image active aspect-square w-full h-full object-cover absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" class="about-image aspect-square w-full h-full object-cover absolute inset-0">
+          <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=800&auto=format&fit=crop" class="about-image aspect-square w-full h-full object-cover absolute inset-0">
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div id="aboutScroll" class="h-[600px] overflow-y-auto snap-y snap-mandatory pr-1">
+          <article class="about-content-item active snap-start min-h-[600px] flex items-center">
+            <div>
+              <div class="inline-flex items-center gap-2 rounded-full border-gradient bg-white/5 px-3 py-1.5 backdrop-blur">
+                <span class="text-xs text-white/70">Sobre Mim</span>
+              </div>
+              <h2 class="mt-5 text-4xl md:text-5xl text-white drop-shadow-xl font-semibold tracking-tight">
+                Unindo código e design estruturado
+              </h2>
+              <p class="text-base md:text-lg text-white/70 mt-6">
+                Sou o Matheus, um desenvolvedor de software de 21 anos apaixonado por criar soluções eficientes e arquiteturas modernas. 
+              </p>
+              <p class="text-base md:text-lg text-white/70 mt-4">
+                Com forte base em tecnologias back-end e front-end, tenho experiência tanto em ambientes corporativos quanto no desenvolvimento de projetos acadêmicos de alto impacto.
+              </p>
+            </div>
+          </article>
+          <article class="about-content-item snap-start min-h-[600px] flex items-center">
+            <div>
+              <div class="inline-flex items-center gap-2 rounded-full border-gradient bg-white/5 px-3 py-1.5 backdrop-blur">
+                <span class="text-xs text-white/70">Experiência</span>
+              </div>
+              <h2 class="mt-5 text-4xl md:text-5xl text-white drop-shadow-xl font-semibold tracking-tight">
+                Vivência no mercado corporativo
+              </h2>
+              <p class="text-base md:text-lg text-white/70 mt-6">
+                Nos últimos anos, trabalhei em grandes empresas como Simpress e Prevent Sênior, onde fui responsável pelo desenvolvimento de interfaces e automação de sistemas.
+              </p>
+              <p class="text-base md:text-lg text-white/70 mt-4">
+                Construí dashboards no Power BI, desenvolvi com C# e implementei soluções robustas que facilitaram o dia a dia e melhoraram processos críticos.
+              </p>
+            </div>
+          </article>
+          <article class="about-content-item snap-start min-h-[600px] flex items-center">
+            <div>
+              <div class="inline-flex items-center gap-2 rounded-full border-gradient bg-white/5 px-3 py-1.5 backdrop-blur">
+                <span class="text-xs text-white/70">Formação & Skils</span>
+              </div>
+              <h2 class="mt-5 text-4xl md:text-5xl text-white drop-shadow-xl font-semibold tracking-tight">
+                Construindo a base tecnológica
+              </h2>
+              <p class="text-base md:text-lg text-white/70 mt-6">
+                Sou estudante de Ciência da Computação na Universidade Anhembi Morumbi e foco meu aprendizado na Engenharia de Software e em arquiteturas complexas.
+              </p>
+              <p class="text-base md:text-lg text-white/70 mt-4">
+                Minhas tecnologias principais envolvem Java, Spring Boot, TypeScript, Next.js, além de integrações Cloud com AWS e infraestrutura com Docker.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 mt-8">
+          <div class="rounded-xl border-gradient before:rounded-xl bg-white/5 p-6">
+            <h3 class="text-lg font-semibold text-amber-400">3+ Anos</h3>
+            <p class="text-sm text-white/60">De experiência com Código e Projetos</p>
+          </div>
+          <div class="rounded-xl border-gradient before:rounded-xl bg-white/5 p-6">
+            <h3 class="text-lg font-semibold text-orange-400">AWS & Cisco</h3>
+            <p class="text-sm text-white/60">Certificações de Infraestrutura e Redes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .about-image { opacity: 0; transform: translateY(24px); transition: transform 600ms cubic-bezier(.2, .8, .2, 1), opacity 600ms ease; will-change: transform, opacity; }
+    .about-image.active { opacity: 1; transform: translateY(0); z-index: 1; }
+    .about-content-item { opacity: 0.35; transform: translateY(8px); transition: opacity 280ms ease, transform 280ms ease; }
+    .about-content-item.active { opacity: 1; transform: translateY(0); }
+  </style>
+</section>
+
+<section class="z-10 xl:py-24 mt-24 pt-12 pb-12 relative" id="services" style="background-image: linear-gradient(to bottom, #000, #0a0a0a, #000);">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn 0.5s ease-in-out 0.1s both">
+      <h2 class="text-4xl md:text-6xl text-white mt-5 drop-shadow-xl font-semibold tracking-tight">O que eu ofereço</h2>
+      <p class="text-base md:text-lg text-white/70 mt-4">Soluções completas de ponta a ponta para sua aplicação web.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+      <div class="overflow-hidden border-gradient bg-white/5 rounded-2xl p-6 backdrop-blur-xl animate-on-scroll">
+        <i data-lucide="layout" class="w-8 h-8 text-amber-400 mb-4"></i>
+        <h3 class="text-xl font-semibold text-white tracking-tight">Desenvolvimento Front-end</h3>
+        <p class="mt-2 text-sm text-white/70">Criação de sites dinâmicos, velozes e totalmente responsivos focando na experiência do usuário e acessibilidade.</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-xs px-2 py-1 rounded-full bg-white/5 text-white/60">React</span>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/5 text-white/60">Next.js</span>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/5 text-white/60">Tailwind</span>
+        </div>
+      </div>
+
+      <div class="overflow-hidden border-gradient bg-white/5 rounded-2xl p-6 backdrop-blur-xl animate-on-scroll">
+        <i data-lucide="database" class="w-8 h-8 text-orange-400 mb-4"></i>
+        <h3 class="text-xl font-semibold text-white tracking-tight">Desenvolvimento Back-end</h3>
+        <p class="mt-2 text-sm text-white/70">APIs robustas, microsserviços, modelagem de banco de dados e sistemas de alta performance com segurança integrada.</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-xs px-2 py-1 rounded-full bg-white/5 text-white/60">Java</span>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/5 text-white/60">Spring Boot</span>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/5 text-white/60">PostgreSQL</span>
+        </div>
+      </div>
+
+      <div class="overflow-hidden border-gradient bg-white/5 rounded-2xl p-6 backdrop-blur-xl animate-on-scroll">
+        <i data-lucide="cloud" class="w-8 h-8 text-amber-400 mb-4"></i>
+        <h3 class="text-xl font-semibold text-white tracking-tight">Otimização e Nuvem</h3>
+        <p class="mt-2 text-sm text-white/70">Otimização de performance, automação de deploys e arquitetura de sistemas preparados para escalabilidade.</p>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-xs px-2 py-1 rounded-full bg-white/5 text-white/60">AWS</span>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/5 text-white/60">Docker</span>
+          <span class="text-xs px-2 py-1 rounded-full bg-white/5 text-white/60">Vercel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pt-24 pb-24 relative" id="process">
+  <div class="lg:px-8 max-w-5xl mr-auto ml-auto pr-6 pl-6">
+    <div class="text-center mb-16 animate-on-scroll">
+      <h2 class="text-4xl md:text-5xl font-semibold tracking-tight">Metodologia de Trabalho</h2>
+      <p class="text-white/70 mt-4 text-lg">Um workflow validado que entrega sistemas escaláveis.</p>
+    </div>
+
+    <div class="relative">
+      <div class="absolute left-5 top-12 bottom-12 w-px bg-gradient-to-b from-orange-500 to-amber-500/0 hidden md:block"></div>
+      <div class="space-y-6">
+        <div class="relative animate-on-scroll">
+          <div class="flex gap-5 items-start">
+            <div class="flex-shrink-0 flex z-10 bg-gradient-to-br from-orange-500 to-amber-500 w-10 h-10 rounded-full relative items-center justify-center font-bold">1</div>
+            <div class="flex-1 rounded-2xl bg-white/5 backdrop-blur-xl border-gradient p-6">
+              <h3 class="text-xl font-semibold tracking-tight mb-2">Descoberta e Planejamento</h3>
+              <p class="text-white/60 text-sm">Compreensão das regras de negócio, infraestrutura desejada e levantamento dos requisitos técnicos do sistema.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative animate-on-scroll">
+          <div class="flex gap-5 items-start">
+            <div class="flex-shrink-0 flex z-10 bg-gradient-to-br from-orange-500 to-amber-500 w-10 h-10 rounded-full relative items-center justify-center font-bold">2</div>
+            <div class="flex-1 rounded-2xl bg-white/5 backdrop-blur-xl border-gradient p-6">
+              <h3 class="text-xl font-semibold tracking-tight mb-2">Design de Arquitetura</h3>
+              <p class="text-white/60 text-sm">Criação de diagramas de banco de dados, definição de tecnologias, wireframes e fluxo da API.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative animate-on-scroll">
+          <div class="flex gap-5 items-start">
+            <div class="flex-shrink-0 flex z-10 bg-gradient-to-br from-orange-500 to-amber-500 w-10 h-10 rounded-full relative items-center justify-center font-bold">3</div>
+            <div class="flex-1 rounded-2xl bg-white/5 backdrop-blur-xl border-gradient p-6">
+              <h3 class="text-xl font-semibold tracking-tight mb-2">Desenvolvimento Integrado</h3>
+              <p class="text-white/60 text-sm">Escrita de código limpo (Clean Code), componentização do Front-end e criação de serviços Back-end sólidos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative animate-on-scroll">
+          <div class="flex gap-5 items-start">
+            <div class="flex-shrink-0 flex z-10 bg-gradient-to-br from-orange-500 to-amber-500 w-10 h-10 rounded-full relative items-center justify-center font-bold">4</div>
+            <div class="flex-1 rounded-2xl bg-white/5 backdrop-blur-xl border-gradient p-6">
+              <h3 class="text-xl font-semibold tracking-tight mb-2">Lançamento e Deploy</h3>
+              <p class="text-white/60 text-sm">Testes unitários, provisionamento via Docker/Cloud e publicação em ambiente de produção contínuo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="z-10 xl:pt-32 xl:pb-32 mt-12 pt-32 pb-32 relative bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=3840&auto=format&fit=crop')] bg-cover bg-center" id="contact">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="lg:px-8 max-w-4xl mr-auto ml-auto pr-6 pl-6 relative z-10">
+    <div class="border-gradient before:rounded-3xl md:p-12 animate-on-scroll text-center bg-black/40 rounded-3xl pt-8 pr-8 pb-8 pl-8 backdrop-blur-xl">
+      <h2 class="text-3xl md:text-5xl text-white mb-4 font-semibold tracking-tight">Pronto para começarmos?</h2>
+      <p class="text-base md:text-lg text-white/70 max-w-2xl mx-auto mb-8">
+        Seja para estruturar o back-end da sua aplicação ou desenvolver uma interface moderna e fluida, estou à disposição.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 items-center justify-center mb-8">
+        <a href="mailto:msilvagino@gmail.com" class="inline-flex items-center gap-2 font-semibold text-black bg-gradient-to-r from-amber-400 to-orange-400 rounded-full px-6 py-3 hover:opacity-90 transition">
+          msilvagino@gmail.com
+          <i data-lucide="mail" class="w-4 h-4"></i>
+        </a>
+        <a href="https://wa.me/5511934459498" target="_blank" class="inline-flex items-center gap-2 border border-white/20 text-white bg-white/5 rounded-full px-6 py-3 hover:bg-white/10 transition">
+          +55 11 93445-9498
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+        </a>
+      </div>
+      <div class="flex justify-center gap-6 text-white/60 border-t border-white/10 pt-6">
+        <a href="https://www.linkedin.com/in/matheus-silva-gino-92a398263" target="_blank" class="hover:text-white transition flex items-center gap-2"><i data-lucide="linkedin" class="w-5 h-5"></i> LinkedIn</a>
+        <a href="https://github.com/MatheusGino71" target="_blank" class="hover:text-white transition flex items-center gap-2"><i data-lucide="github" class="w-5 h-5"></i> GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="z-10 relative">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="border-white/[0.06] border-t pt-8 pb-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/60">
+      <p>© 2026 Matheus Silva Gino. Desenvolvedor Full Stack de São Paulo, SP.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="./script.js"></script>
+</body>
+</html>
