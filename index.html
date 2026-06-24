@@ -5,11 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Matheus Silva Gino — Desenvolvedor de Software</title>
 <meta name="description" content="Portfólio de Matheus Silva Gino, Desenvolvedor Full Stack especializado em Java, Spring Boot e Next.js.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="canonical" href="https://matheus-silva-gino.vercel.app/">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Matheus Silva Gino — Desenvolvedor Full Stack">
+<meta property="og:description" content="Desenvolvedor Full Stack especializado em Java, Spring Boot, TypeScript e Next.js. Transformando requisitos complexos em sistemas robustos.">
+<meta property="og:url" content="https://matheus-silva-gino.vercel.app/">
+<meta property="og:image" content="https://matheus-silva-gino.vercel.app/media/foto_profissional.jpeg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Matheus Silva Gino — Desenvolvedor Full Stack">
+<meta name="twitter:description" content="Desenvolvedor Full Stack especializado em Java, Spring Boot, TypeScript e Next.js.">
+<meta name="twitter:image" content="https://matheus-silva-gino.vercel.app/media/foto_profissional.jpeg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
 <script src="https://unpkg.com/lucide@latest"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Matheus Silva Gino",
+  "jobTitle": "Desenvolvedor Full Stack",
+  "url": "https://matheus-silva-gino.vercel.app/",
+  "image": "https://matheus-silva-gino.vercel.app/media/foto_profissional.jpeg",
+  "email": "msilvagino@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressRegion": "SP", "addressCountry": "BR" },
+  "sameAs": [
+    "https://www.linkedin.com/in/matheus-silva-gino-92a398263",
+    "https://github.com/MatheusGino71"
+  ],
+  "knowsAbout": ["Java", "Spring Boot", "TypeScript", "Next.js", "React", "AWS", "Docker", "PostgreSQL"],
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidade Anhembi Morumbi" }
+}
+</script>
 <style>
 @keyframes fadeSlideIn {
 0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
@@ -72,6 +108,21 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
 .video-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.3s ease; z-index: 2; }
 .portfolio-item:hover .video-play-btn { background: rgba(0,0,0,0.5); }
 .carousel-video { width: 100%; height: 100%; object-fit: cover; }
+.hero-subtitle { animation: fadeSlideIn 1s ease-out 1.2s both; }
+.skill-tag { font-size:.75rem; padding:.25rem .625rem; border-radius:9999px; background:rgba(255,255,255,.05); color:rgba(255,255,255,.6); border:1px solid rgba(255,255,255,.08); }
+.skill-tag-lg { font-size:.8rem; padding:.375rem .75rem; border-radius:9999px; background:rgba(255,255,255,.05); color:rgba(255,255,255,.7); border:1px solid rgba(255,255,255,.1); transition:all .2s; display:inline-block; }
+.skill-tag-lg:hover { background:rgba(255,255,255,.12); color:#fff; }
+.nav-link { transition: color .2s; }
+.nav-link.nav-active { color: #fff; }
+#back-to-top { opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s ease, transform .3s ease; }
+#back-to-top.visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+.exp-dot { position:absolute; left:-25px; top:6px; width:12px; height:12px; border-radius:50%; outline:4px solid #000; }
+.exp-dot-amber { background:#fbbf24; }
+.exp-dot-orange { background:#fb923c; }
+.exp-dot-purple { background:#c084fc; }
+.exp-dot-blue { background:#60a5fa; }
+.fade-in-1 { animation: fadeSlideIn 0.5s ease-in-out 0.1s both; }
+.fade-in-2 { animation: fadeSlideIn 0.5s ease-in-out 0.15s both; }
 </style>
 </head>
 <body class="antialiased text-white bg-black" style="font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial">
@@ -84,7 +135,7 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
 </div>
 
 <div class="gradient-blur">
-  <div></div><div></div><div></div><div></div>
+  <div></div><div></div><div></div><div></div><div></div><div></div>
 </div>
 
 <div class="overflow-hidden relative">
@@ -95,26 +146,28 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
           <span class="text-xl font-semibold tracking-tight">Matheus Silva Gino</span>
         </a>
         <button class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition ml-auto" id="mobile-menu-toggle" aria-label="Toggle menu">
-          <i data-lucide="menu" class="w-5 h-5"></i>
+          <i aria-hidden="true" data-lucide="menu" class="w-5 h-5"></i>
         </button>
         <nav class="hidden lg:flex items-center gap-8 text-sm text-white/70">
-          <a href="#portfolio" class="hover:text-white transition">Portfólio</a>
-          <a href="#about" class="hover:text-white transition">Sobre</a>
-          <a href="#services" class="hover:text-white transition">Serviços</a>
-          <a href="#process" class="hover:text-white transition">Processo</a>
-          <a href="#contact" class="hover:text-white transition">Contato</a>
+          <a href="#portfolio" class="nav-link hover:text-white transition" data-section="portfolio">Portfólio</a>
+          <a href="#about" class="nav-link hover:text-white transition" data-section="about">Sobre</a>
+          <a href="#experience" class="nav-link hover:text-white transition" data-section="experience">Experiência</a>
+          <a href="#services" class="nav-link hover:text-white transition" data-section="services">Serviços</a>
+          <a href="#process" class="nav-link hover:text-white transition" data-section="process">Processo</a>
+          <a href="#contact" class="nav-link hover:text-white transition" data-section="contact">Contato</a>
         </nav>
         <div class="flex items-center gap-3">
           <a href="#contact" class="group inline-flex min-w-[140px] cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:scale-105 border-gradient hover:text-white gap-2 text-sm font-medium text-white/80 tracking-tight bg-white/5 rounded-full pt-3 pr-5 pb-3 pl-5 relative backdrop-blur-xl gap-x-2 gap-y-2 items-center justify-center hidden md:inline-flex">
             Contrate-me
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <i aria-hidden="true" data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
         </div>
       </div>
-      <nav id="mobile-menu" class="lg:hidden hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 overflow-hidden" style="max-height: 0; transition: max-height 0.3s ease-in-out;">
+      <nav id="mobile-menu" class="lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 overflow-hidden" style="display: none; max-height: 0; transition: max-height 0.3s ease-in-out;">
         <div class="flex flex-col p-6 space-y-4">
           <a href="#portfolio" class="text-base text-white/70 hover:text-white transition py-2">Portfólio</a>
           <a href="#about" class="text-base text-white/70 hover:text-white transition py-2">Sobre</a>
+          <a href="#experience" class="text-base text-white/70 hover:text-white transition py-2">Experiência</a>
           <a href="#services" class="text-base text-white/70 hover:text-white transition py-2">Serviços</a>
           <a href="#process" class="text-base text-white/70 hover:text-white transition py-2">Processo</a>
           <a href="#contact" class="text-base text-white/70 hover:text-white transition py-2">Contato</a>
@@ -125,7 +178,7 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
 
   <section class="min-h-screen flex flex-col section-visible text-center pt-0 pr-6 pb-24 pl-6 relative items-center justify-center xl:pt-0 xl:pb-0">
     <div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-2 backdrop-blur-sm text-white/80 ring-1 ring-white/10 animate-badge">
-      <i data-lucide="code-2" class="w-4 h-4"></i>
+      <i aria-hidden="true" data-lucide="code-2" class="w-4 h-4"></i>
       <span>Desenvolvedor Full Stack</span>
     </div>
 
@@ -140,7 +193,7 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
       <span class="block text-[8vw] sm:text-6xl lg:text-7xl">modernas</span>
     </h1>
 
-    <p class="max-w-3xl mx-auto text-lg md:text-xl text-white/80 type-words is-in" data-stagger=".1s" data-duration="1.5s" data-ease="ease-in-out" data-delay=".4s">
+    <p class="max-w-3xl mx-auto text-lg md:text-xl text-white/80 hero-subtitle">
       Especializado em Java, Spring Boot, TypeScript e Next.js. Transformando requisitos complexos em sistemas robustos e interfaces acessíveis.
     </p>
 
@@ -154,9 +207,9 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
     </div>
 
     <div class="flex flex-wrap xl:py-24 text-xs text-white/60 mt-8 pt-24 pb-24 gap-x-6 gap-y-6 items-center justify-center" style="animation: fadeSlideIn 0.5s ease-in-out 0.5s both">
-      <span class="inline-flex items-center gap-1.5"><i data-lucide="clock" class="w-4 h-4"></i> 3+ Anos de Experiência</span>
-      <span class="inline-flex items-center gap-1.5"><i data-lucide="briefcase" class="w-4 h-4"></i> 15+ Projetos Entregues</span>
-      <span class="inline-flex items-center gap-1.5"><i data-lucide="users" class="w-4 h-4"></i> 100% Clientes Satisfeitos</span>
+      <span class="inline-flex items-center gap-1.5"><i aria-hidden="true" data-lucide="clock" class="w-4 h-4"></i> 3+ Anos de Experiência</span>
+      <span class="inline-flex items-center gap-1.5"><i aria-hidden="true" data-lucide="briefcase" class="w-4 h-4"></i> 15+ Projetos Entregues</span>
+      <span class="inline-flex items-center gap-1.5"><i aria-hidden="true" data-lucide="users" class="w-4 h-4"></i> 100% Clientes Satisfeitos</span>
     </div>
   </section>
 </div>
@@ -170,17 +223,17 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
       </div>
 
       <div class="relative">
-        <div class="flex snap-x snap-mandatory overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] md:gap-8 md:scroll-px-8 md:pt-16 md:px-8 max-w-7xl pt-6 pr-8 pb-6 pl-8 gap-x-6 gap-y-x-6" id="work-carousel">
+        <div class="flex snap-x snap-mandatory overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] md:gap-8 md:scroll-px-8 md:pt-16 md:px-8 max-w-7xl pt-6 pr-8 pb-6 pl-8 gap-6" id="work-carousel">
           
-          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 bg-neutral-900/40">
-            <video class="carousel-video" poster="./logos/nexus.png.png" muted loop playsinline autoplay>
+          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 ring-white/10 bg-neutral-900/40">
+            <video class="carousel-video" poster="./logos/nexus.png.png" muted loop playsinline preload="none">
               <source src="./projetos/nexus.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
               <div class="flex items-center gap-2 text-[11px] md:text-xs text-white/70">
                 <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-lime-400/20 ring-1 ring-lime-300/30">
-                  <i data-lucide="layout" class="h-3.5 w-3.5 text-lime-300"></i>
+                  <i aria-hidden="true" data-lucide="layout" class="h-3.5 w-3.5 text-lime-300"></i>
                 </span>
                 UI Design • Gestão
               </div>
@@ -193,15 +246,15 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
             </div>
           </article>
 
-          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 bg-neutral-900/40">
-            <video class="carousel-video" poster="./logos/XD5_LOGO_VERSAO_VERTICAL_COLORIDO.png" muted loop playsinline autoplay>
+          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 ring-white/10 bg-neutral-900/40">
+            <video class="carousel-video" poster="./logos/XD5_LOGO_VERSAO_VERTICAL_COLORIDO.png" muted loop playsinline preload="none">
               <source src="./projetos/lp_xadascinco.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
               <div class="flex items-center gap-2 text-[11px] md:text-xs text-white/70">
                 <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-orange-400/20 ring-1 ring-orange-300/30">
-                  <i data-lucide="monitor" class="h-3.5 w-3.5 text-orange-300"></i>
+                  <i aria-hidden="true" data-lucide="monitor" class="h-3.5 w-3.5 text-orange-300"></i>
                 </span>
                 Web Dev • Marketing
               </div>
@@ -214,15 +267,15 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
             </div>
           </article>
 
-          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 bg-neutral-900/40">
-            <video class="carousel-video" poster="./logos/zenit.png.png" muted loop playsinline autoplay>
+          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 ring-white/10 bg-neutral-900/40">
+            <video class="carousel-video" poster="./logos/zenit.png.png" muted loop playsinline preload="none">
               <source src="./projetos/zenit.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
               <div class="flex items-center gap-2 text-[11px] md:text-xs text-white/70">
                 <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-purple-400/20 ring-1 ring-purple-300/30">
-                  <i data-lucide="shield-check" class="h-3.5 w-3.5 text-purple-300"></i>
+                  <i aria-hidden="true" data-lucide="shield-check" class="h-3.5 w-3.5 text-purple-300"></i>
                 </span>
                 Back-end • Segurança
               </div>
@@ -235,21 +288,21 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
             </div>
           </article>
 
-          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 bg-neutral-900/40">
-            <a href="https://frontend-marketplace-sigma.vercel.app/" target="_blank" class="block w-full h-full relative bg-black overflow-hidden cursor-pointer">
-              <iframe src="https://frontend-marketplace-sigma.vercel.app/" class="w-[150%] h-[150%] border-0 absolute top-0 left-0 pointer-events-none" style="transform: scale(0.666); transform-origin: top left;"></iframe>
+          <article class="group relative snap-center shrink-0 w-[82vw] sm:w-[68vw] md:w-[520px] lg:w-[640px] aspect-[16/10] rounded-2xl overflow-hidden ring-1 ring-white/10 bg-neutral-900/40">
+            <a href="https://card3-tawny.vercel.app/" target="_blank" rel="noopener noreferrer" class="block w-full h-full relative bg-black overflow-hidden cursor-pointer">
+              <iframe src="https://card3-tawny.vercel.app/" title="Prévia do projeto The Six Mayfair" loading="lazy" class="w-[150%] h-[150%] border-0 absolute top-0 left-0 pointer-events-none" style="transform: scale(0.666); transform-origin: top left;"></iframe>
               <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent hover:from-black/90 transition-all duration-300"></div>
               <div class="absolute inset-x-0 bottom-0 p-5 md:p-6 z-10 pointer-events-none">
                 <div class="flex items-center gap-2 text-[11px] md:text-xs text-white/70">
-                  <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-blue-400/20 ring-1 ring-blue-300/30">
-                    <i data-lucide="shopping-cart" class="h-3.5 w-3.5 text-blue-300"></i>
+                  <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-400/20 ring-1 ring-emerald-300/30">
+                    <i aria-hidden="true" data-lucide="credit-card" class="h-3.5 w-3.5 text-emerald-300"></i>
                   </span>
-                  Web Dev • Front-end
+                  UI Design • Luxo
                 </div>
                 <div class="mt-2.5 flex items-end justify-between gap-3">
                   <div>
-                    <h3 class="text-xl md:text-2xl lg:text-[28px] font-semibold tracking-tight">Frontend Marketplace</h3>
-                    <p class="text-sm md:text-base text-white/70">Plataforma de marketplace completa e dinâmica</p>
+                    <h3 class="text-xl md:text-2xl lg:text-[28px] font-semibold tracking-tight">The Six Mayfair</h3>
+                    <p class="text-sm md:text-base text-white/70">Card design para restaurante de luxo em Londres</p>
                   </div>
                 </div>
               </div>
@@ -280,8 +333,8 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10" id="portfolio-grid">
       <div class="portfolio-item rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="ui">
-        <video class="w-full aspect-square object-cover" poster="./logos/nexus.png.png" muted loop playsinline>
-          <source src="./projetos/nexus.mp4" type="video/mp4">
+        <video class="w-full aspect-square object-cover" poster="./logos/nexus.png.png" muted loop playsinline preload="none">
+  <source src="./projetos/nexus.mp4" type="video/mp4">
         </video>
         <div class="portfolio-overlay">
           <h3 class="text-lg font-semibold">Nexus</h3>
@@ -293,8 +346,8 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
         </div>
       </div>
       <div class="portfolio-item rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="web">
-        <video class="w-full aspect-square object-cover" poster="./logos/XD5_LOGO_VERSAO_VERTICAL_COLORIDO.png" muted loop playsinline>
-          <source src="./projetos/lp_xadascinco.mp4" type="video/mp4">
+        <video class="w-full aspect-square object-cover" poster="./logos/XD5_LOGO_VERSAO_VERTICAL_COLORIDO.png" muted loop playsinline preload="none">
+  <source src="./projetos/lp_xadascinco.mp4" type="video/mp4">
         </video>
         <div class="portfolio-overlay">
           <h3 class="text-lg font-semibold">Xá das Cinco</h3>
@@ -306,8 +359,8 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
         </div>
       </div>
       <div class="portfolio-item rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="backend">
-        <video class="w-full aspect-square object-cover" poster="./logos/zenit.png.png" muted loop playsinline>
-          <source src="./projetos/zenit.mp4" type="video/mp4">
+        <video class="w-full aspect-square object-cover" poster="./logos/zenit.png.png" muted loop playsinline preload="none">
+  <source src="./projetos/zenit.mp4" type="video/mp4">
         </video>
         <div class="portfolio-overlay">
           <h3 class="text-lg font-semibold">ZENIT</h3>
@@ -318,9 +371,9 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
           </div>
         </div>
       </div>
-      <a href="https://cronograma-estudos-nine.vercel.app/" target="_blank" class="portfolio-item block rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="web">
+      <a href="https://cronograma-estudos-nine.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item block rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="web">
         <div class="w-full aspect-square relative bg-black overflow-hidden">
-          <img src="./logos/cronograma_de_estudos.png.png" alt="Cronograma de Estudos" class="w-full h-full object-cover">
+          <img src="./logos/cronograma_de_estudos.png.png" alt="Cronograma de Estudos" loading="lazy" class="w-full h-full object-cover">
         </div>
         <div class="portfolio-overlay">
           <h3 class="text-lg font-semibold">Cronograma de Estudos</h3>
@@ -331,22 +384,22 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
           </div>
         </div>
       </a>
-      <a href="https://frontend-marketplace-sigma.vercel.app/" target="_blank" class="portfolio-item block rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="web">
+      <a href="https://card3-tawny.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item block rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="ui">
         <div class="w-full aspect-square relative bg-black overflow-hidden">
-          <iframe src="https://frontend-marketplace-sigma.vercel.app/" class="w-[200%] h-[200%] border-0 absolute top-0 left-0 pointer-events-none" style="transform: scale(0.5); transform-origin: top left;"></iframe>
+          <iframe src="https://card3-tawny.vercel.app/" title="Prévia do projeto The Six Mayfair" loading="lazy" class="w-[200%] h-[200%] border-0 absolute top-0 left-0 pointer-events-none" style="transform: scale(0.5); transform-origin: top left;"></iframe>
         </div>
         <div class="portfolio-overlay">
-          <h3 class="text-lg font-semibold">Frontend Marketplace</h3>
-          <p class="text-xs text-white/60 mt-1">Plataforma de marketplace completa</p>
+          <h3 class="text-lg font-semibold">The Six Mayfair</h3>
+          <p class="text-xs text-white/60 mt-1">Card de luxo — Londres</p>
           <div class="flex gap-2 mt-3">
-            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">Web Dev</span>
-            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">Front-end</span>
+            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">UI Design</span>
+            <span class="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80">Branding</span>
           </div>
         </div>
       </a>
-      <a href="https://zync-rho.vercel.app/" target="_blank" class="portfolio-item block rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="web">
+      <a href="https://zync-rho.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-item block rounded-2xl overflow-hidden border border-white/10 bg-white/5" data-category="web">
         <div class="w-full aspect-square relative bg-black overflow-hidden">
-          <img src="./logos/zync_png.png" alt="Zync" class="w-full h-full object-cover">
+          <img src="./logos/zync_png.png" alt="Zync" loading="lazy" class="w-full h-full object-cover">
         </div>
         <div class="portfolio-overlay">
           <h3 class="text-lg font-semibold">Zync</h3>
@@ -366,9 +419,9 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
     <div class="grid gap-10 lg:grid-cols-12 items-start">
       <div class="lg:col-span-5 relative overflow-hidden rounded-2xl" style="height:600px;">
         <div class="about-image-container absolute inset-0">
-          <img src="./media/matheus-portrait.jpg.jpeg" class="about-image active aspect-square w-full h-full object-cover absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop" class="about-image aspect-square w-full h-full object-cover absolute inset-0">
-          <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=800&auto=format&fit=crop" class="about-image aspect-square w-full h-full object-cover absolute inset-0">
+          <img src="./media/matheus-portrait.jpg.jpeg" alt="Matheus Silva Gino" loading="lazy" class="about-image active aspect-square w-full h-full object-cover absolute inset-0">
+          <img src="./media/nexus_cover.png" alt="Projeto Nexus" loading="lazy" class="about-image aspect-square w-full h-full object-cover absolute inset-0">
+          <img src="./media/zenit_cover.png" alt="Sistema ZENIT" loading="lazy" class="about-image aspect-square w-full h-full object-cover absolute inset-0">
         </div>
       </div>
 
@@ -399,17 +452,17 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
                 Vivência no mercado corporativo
               </h2>
               <p class="text-base md:text-lg text-white/70 mt-6">
-                Nos últimos anos, trabalhei em grandes empresas como Simpress e Prevent Sênior, onde fui responsável pelo desenvolvimento de interfaces e automação de sistemas.
+                Atualmente na MeuCurso Inteligência e Tecnologia Educacional, e com passagens pela Simpress e Prevent Sênior, onde fui responsável pelo desenvolvimento de interfaces e automação de sistemas.
               </p>
               <p class="text-base md:text-lg text-white/70 mt-4">
-                Construí dashboards no Power BI, desenvolvi com C# e implementei soluções robustas que facilitaram o dia a dia e melhoraram processos críticos.
+                Construí dashboards no Power BI, desenvolvi com Angular e C#, e implementei soluções que melhoraram processos críticos no dia a dia das empresas.
               </p>
             </div>
           </article>
           <article class="about-content-item snap-start min-h-[600px] flex items-center">
             <div>
               <div class="inline-flex items-center gap-2 rounded-full border-gradient bg-white/5 px-3 py-1.5 backdrop-blur">
-                <span class="text-xs text-white/70">Formação & Skils</span>
+                <span class="text-xs text-white/70">Formação & Skills</span>
               </div>
               <h2 class="mt-5 text-4xl md:text-5xl text-white drop-shadow-xl font-semibold tracking-tight">
                 Construindo a base tecnológica
@@ -422,6 +475,12 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
               </p>
             </div>
           </article>
+        </div>
+
+        <div class="flex gap-2 mt-4" id="about-dots" aria-label="Navegação de slides">
+          <button type="button" class="about-dot w-2 h-2 rounded-full bg-white transition-all duration-300" data-idx="0" aria-label="Sobre mim"></button>
+          <button type="button" class="about-dot w-2 h-2 rounded-full bg-white/25 transition-all duration-300" data-idx="1" aria-label="Experiência"></button>
+          <button type="button" class="about-dot w-2 h-2 rounded-full bg-white/25 transition-all duration-300" data-idx="2" aria-label="Formação e Skills"></button>
         </div>
 
         <div class="grid grid-cols-2 gap-6 mt-8">
@@ -446,6 +505,174 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
   </style>
 </section>
 
+<section class="z-10 xl:py-24 mt-12 pt-16 pb-24 relative" id="experience">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid gap-14 lg:grid-cols-2 lg:gap-16">
+
+      <!-- Coluna esquerda: Timeline -->
+      <div>
+        <div class="animate-on-scroll fade-in-1">
+          <h2 class="text-4xl md:text-5xl text-white font-semibold tracking-tight">Experiência</h2>
+          <p class="text-base md:text-lg text-white/70 mt-3 mb-10">Trajetória profissional e formação acadêmica.</p>
+        </div>
+
+        <div class="relative pl-7 space-y-6">
+          <div class="absolute left-0 top-2 bottom-4 w-px bg-gradient-to-b from-amber-500 via-orange-500/40 to-transparent"></div>
+
+          <!-- MeuCurso -->
+          <div class="animate-on-scroll relative">
+            <div class="exp-dot exp-dot-amber"></div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-5 backdrop-blur-sm">
+              <div class="flex items-start justify-between gap-2 flex-wrap">
+                <div>
+                  <h3 class="font-semibold text-white leading-tight">MeuCurso Inteligência e Tecnologia Educacional</h3>
+                  <p class="text-sm text-amber-400 mt-0.5">Aprendiz em Tecnologia Educacional</p>
+                </div>
+                <span class="text-xs text-white/40 whitespace-nowrap mt-1">Jun 2025 – Jan 2027</span>
+              </div>
+              <p class="text-sm text-white/60 mt-3">Atuação em rotinas de tecnologia educacional e desenvolvimento de melhorias operacionais.</p>
+            </div>
+          </div>
+
+          <!-- Simpress -->
+          <div class="animate-on-scroll relative">
+            <div class="exp-dot exp-dot-orange"></div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-5 backdrop-blur-sm">
+              <div class="flex items-start justify-between gap-2 flex-wrap">
+                <div>
+                  <h3 class="font-semibold text-white leading-tight">Simpress</h3>
+                  <p class="text-sm text-orange-400 mt-0.5">Desenvolvedor de Software (Aprendiz)</p>
+                </div>
+                <span class="text-xs text-white/40 whitespace-nowrap mt-1">Jan – Mar 2025</span>
+              </div>
+              <p class="text-sm text-white/60 mt-3">Desenvolvimento Front-End com Python e C#, Angular para interfaces interativas, automação de sistemas e suporte via Microsoft AX.</p>
+              <div class="flex gap-2 mt-3 flex-wrap">
+                <span class="skill-tag">Angular</span>
+                <span class="skill-tag">C#</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">.NET</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prevent Senior -->
+          <div class="animate-on-scroll relative">
+            <div class="exp-dot exp-dot-purple"></div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-5 backdrop-blur-sm">
+              <div class="flex items-start justify-between gap-2 flex-wrap">
+                <div>
+                  <h3 class="font-semibold text-white leading-tight">Prevent Senior</h3>
+                  <p class="text-sm text-purple-400 mt-0.5">Auxiliar Administrativo (Aprendiz)</p>
+                </div>
+                <span class="text-xs text-white/40 whitespace-nowrap mt-1">Jun 2023 – Set 2024</span>
+              </div>
+              <p class="text-sm text-white/60 mt-3">Dashboards em Power BI, automação de planilhas Excel e gestão de dados administrativos críticos como altas, admissões e arquivamento.</p>
+              <div class="flex gap-2 mt-3 flex-wrap">
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Excel</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Educação -->
+          <div class="animate-on-scroll relative">
+            <div class="exp-dot exp-dot-blue"></div>
+            <div class="rounded-2xl bg-white/5 border border-white/10 p-5 backdrop-blur-sm">
+              <div class="flex items-start justify-between gap-2 flex-wrap">
+                <div>
+                  <h3 class="font-semibold text-white leading-tight">Universidade Anhembi Morumbi</h3>
+                  <p class="text-sm text-blue-400 mt-0.5">Bacharelado em Ciência da Computação</p>
+                </div>
+                <span class="text-xs text-white/40 whitespace-nowrap mt-1">2023 – 2026</span>
+              </div>
+              <p class="text-sm text-white/60 mt-3">Estruturas de Dados, Engenharia de Software, Banco de Dados, Arquitetura de Computadores e Teoria da Computação.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna direita: Skills + Certificações + Download CV -->
+      <div class="space-y-10">
+        <div class="animate-on-scroll fade-in-2">
+          <h2 class="text-4xl md:text-5xl text-white font-semibold tracking-tight">Skills</h2>
+          <p class="text-base md:text-lg text-white/70 mt-3">Stack técnico e ferramentas.</p>
+        </div>
+
+        <!-- Linguagens -->
+        <div class="animate-on-scroll">
+          <p class="text-xs font-semibold text-white/40 uppercase tracking-widest mb-3">Linguagens</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag-lg">TypeScript</span>
+            <span class="skill-tag-lg">JavaScript</span>
+            <span class="skill-tag-lg">Java</span>
+            <span class="skill-tag-lg">Python</span>
+            <span class="skill-tag-lg">HTML</span>
+            <span class="skill-tag-lg">CSS</span>
+            <span class="skill-tag-lg">C#</span>
+          </div>
+        </div>
+
+        <!-- Frameworks & Ferramentas -->
+        <div class="animate-on-scroll">
+          <p class="text-xs font-semibold text-white/40 uppercase tracking-widest mb-3">Frameworks &amp; Ferramentas</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag-lg">React</span>
+            <span class="skill-tag-lg">Next.js</span>
+            <span class="skill-tag-lg">Spring Boot</span>
+            <span class="skill-tag-lg">Node.js</span>
+            <span class="skill-tag-lg">Angular</span>
+            <span class="skill-tag-lg">.NET</span>
+            <span class="skill-tag-lg">Docker</span>
+            <span class="skill-tag-lg">PostgreSQL</span>
+            <span class="skill-tag-lg">AWS</span>
+            <span class="skill-tag-lg">Power BI</span>
+            <span class="skill-tag-lg">GitHub</span>
+          </div>
+        </div>
+
+        <!-- Certificações -->
+        <div class="animate-on-scroll">
+          <p class="text-xs font-semibold text-white/40 uppercase tracking-widest mb-3">Certificações</p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 px-4 py-3">
+              <i aria-hidden="true" data-lucide="award" class="w-5 h-5 text-amber-400 shrink-0"></i>
+              <div>
+                <p class="text-sm font-medium text-white">Cisco Networking AWS</p>
+                <p class="text-xs text-white/50">Cisco Networking Academy</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 px-4 py-3">
+              <i aria-hidden="true" data-lucide="award" class="w-5 h-5 text-orange-400 shrink-0"></i>
+              <div>
+                <p class="text-sm font-medium text-white">AWS Academy Cloud Foundations</p>
+                <p class="text-xs text-white/50">AWS Academy Graduate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Idioma -->
+        <div class="animate-on-scroll">
+          <p class="text-xs font-semibold text-white/40 uppercase tracking-widest mb-3">Idioma</p>
+          <div class="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 px-4 py-3 w-fit">
+            <i aria-hidden="true" data-lucide="globe" class="w-5 h-5 text-blue-400 shrink-0"></i>
+            <p class="text-sm font-medium text-white">Inglês <span class="text-white/50 font-normal">— Intermediário</span></p>
+          </div>
+        </div>
+
+        <!-- Download CV -->
+        <div class="animate-on-scroll">
+          <a href="./media/curriculo_MatheusGino_2026.pdf" download="Curriculo_MatheusGino_2026.pdf" class="inline-flex items-center gap-3 bg-gradient-to-r from-amber-400 to-orange-400 text-black font-semibold rounded-full px-6 py-3 hover:opacity-90 hover:scale-105 transition-all duration-300">
+            <i aria-hidden="true" data-lucide="download" class="w-5 h-5"></i>
+            Download Currículo
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section class="z-10 xl:py-24 mt-24 pt-12 pb-12 relative" id="services" style="background-image: linear-gradient(to bottom, #000, #0a0a0a, #000);">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="max-w-3xl animate-on-scroll" style="animation: fadeSlideIn 0.5s ease-in-out 0.1s both">
@@ -455,7 +682,7 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
       <div class="overflow-hidden border-gradient bg-white/5 rounded-2xl p-6 backdrop-blur-xl animate-on-scroll">
-        <i data-lucide="layout" class="w-8 h-8 text-amber-400 mb-4"></i>
+        <i aria-hidden="true" data-lucide="layout" class="w-8 h-8 text-amber-400 mb-4"></i>
         <h3 class="text-xl font-semibold text-white tracking-tight">Desenvolvimento Front-end</h3>
         <p class="mt-2 text-sm text-white/70">Criação de sites dinâmicos, velozes e totalmente responsivos focando na experiência do usuário e acessibilidade.</p>
         <div class="mt-4 flex flex-wrap gap-2">
@@ -466,7 +693,7 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
       </div>
 
       <div class="overflow-hidden border-gradient bg-white/5 rounded-2xl p-6 backdrop-blur-xl animate-on-scroll">
-        <i data-lucide="database" class="w-8 h-8 text-orange-400 mb-4"></i>
+        <i aria-hidden="true" data-lucide="database" class="w-8 h-8 text-orange-400 mb-4"></i>
         <h3 class="text-xl font-semibold text-white tracking-tight">Desenvolvimento Back-end</h3>
         <p class="mt-2 text-sm text-white/70">APIs robustas, microsserviços, modelagem de banco de dados e sistemas de alta performance com segurança integrada.</p>
         <div class="mt-4 flex flex-wrap gap-2">
@@ -477,7 +704,7 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
       </div>
 
       <div class="overflow-hidden border-gradient bg-white/5 rounded-2xl p-6 backdrop-blur-xl animate-on-scroll">
-        <i data-lucide="cloud" class="w-8 h-8 text-amber-400 mb-4"></i>
+        <i aria-hidden="true" data-lucide="cloud" class="w-8 h-8 text-amber-400 mb-4"></i>
         <h3 class="text-xl font-semibold text-white tracking-tight">Otimização e Nuvem</h3>
         <p class="mt-2 text-sm text-white/70">Otimização de performance, automação de deploys e arquitetura de sistemas preparados para escalabilidade.</p>
         <div class="mt-4 flex flex-wrap gap-2">
@@ -552,16 +779,16 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
       <div class="flex flex-col sm:flex-row gap-3 items-center justify-center mb-8">
         <a href="mailto:msilvagino@gmail.com" class="inline-flex items-center gap-2 font-semibold text-black bg-gradient-to-r from-amber-400 to-orange-400 rounded-full px-6 py-3 hover:opacity-90 transition">
           msilvagino@gmail.com
-          <i data-lucide="mail" class="w-4 h-4"></i>
+          <i aria-hidden="true" data-lucide="mail" class="w-4 h-4"></i>
         </a>
-        <a href="https://wa.me/5511934459498" target="_blank" class="inline-flex items-center gap-2 border border-white/20 text-white bg-white/5 rounded-full px-6 py-3 hover:bg-white/10 transition">
+        <a href="https://wa.me/5511934459498" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white/20 text-white bg-white/5 rounded-full px-6 py-3 hover:bg-white/10 transition">
           +55 11 93445-9498
-          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <i aria-hidden="true" data-lucide="message-circle" class="w-4 h-4"></i>
         </a>
       </div>
       <div class="flex justify-center gap-6 text-white/60 border-t border-white/10 pt-6">
-        <a href="https://www.linkedin.com/in/matheus-silva-gino-92a398263" target="_blank" class="hover:text-white transition flex items-center gap-2"><i data-lucide="linkedin" class="w-5 h-5"></i> LinkedIn</a>
-        <a href="https://github.com/MatheusGino71" target="_blank" class="hover:text-white transition flex items-center gap-2"><i data-lucide="github" class="w-5 h-5"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/matheus-silva-gino-92a398263" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center gap-2"><i aria-hidden="true" data-lucide="linkedin" class="w-5 h-5"></i> LinkedIn</a>
+        <a href="https://github.com/MatheusGino71" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center gap-2"><i aria-hidden="true" data-lucide="github" class="w-5 h-5"></i> GitHub</a>
       </div>
     </div>
   </div>
@@ -574,6 +801,10 @@ section:first-of-type { opacity: 1; transform: translateY(0); }
     </div>
   </div>
 </footer>
+
+<button id="back-to-top" type="button" class="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-colors duration-200" aria-label="Voltar ao topo">
+  <i aria-hidden="true" data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>
 
 <script type="module" src="./script.js"></script>
 </body>
