@@ -54,6 +54,62 @@ function initializePortfolio() {
 
   // Back-to-top
   setupBackToTop();
+
+  // Hero entrance, tilt, and subtle scroll depth
+  setupHeroMotion();
+}
+
+function setupHeroMotion() {
+  const hero = document.querySelector('[data-hero]');
+  const visual = document.querySelector('[data-hero-visual]');
+  const target = document.querySelector('[data-tilt-target]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!hero || !visual || !target) return;
+
+  requestAnimationFrame(() => hero.classList.add('hero-ready'));
+  if (reducedMotion) return;
+
+  let frame = 0;
+  let pointerX = 0;
+  let pointerY = 0;
+  let scrollDepth = 0;
+
+  const render = () => {
+    frame = 0;
+    target.style.setProperty('--hero-x', `${pointerX * 5}px`);
+    target.style.setProperty('--hero-y', `${pointerY * 4}px`);
+    target.style.setProperty('--hero-rx', `${pointerY * -2}deg`);
+    target.style.setProperty('--hero-ry', `${pointerX * 3}deg`);
+    target.style.setProperty('--hero-scroll', `${scrollDepth}px`);
+  };
+
+  const requestRender = () => {
+    if (!frame) frame = requestAnimationFrame(render);
+  };
+
+  requestRender();
+
+  if (window.matchMedia('(pointer: fine)').matches) {
+    hero.addEventListener('pointermove', event => {
+      const bounds = hero.getBoundingClientRect();
+      pointerX = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+      pointerY = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+      requestRender();
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      pointerX = 0;
+      pointerY = 0;
+      requestRender();
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    const progress = Math.min(window.scrollY / Math.max(hero.offsetHeight, 1), 1);
+    scrollDepth = progress * -8;
+    requestRender();
+  }, { passive: true });
 }
 
 // Carousel Setup
