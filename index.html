@@ -868,7 +868,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid rgba(251, 191, 36, 0.
 </section>
 
 <section class="z-10 xl:pt-32 xl:pb-32 mt-12 pt-32 pb-32 relative bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=3840&auto=format&fit=crop')] bg-cover bg-center" id="contact">
-  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm pointer-events-none" aria-hidden="true"></div>
   <div class="lg:px-8 max-w-4xl mr-auto ml-auto pr-6 pl-6 relative z-10">
     <div class="border-gradient before:rounded-3xl md:p-12 animate-on-scroll text-center bg-black/40 rounded-3xl pt-8 pr-8 pb-8 pl-8 backdrop-blur-xl">
       <h2 class="text-3xl md:text-5xl text-white mb-4 font-semibold tracking-tight">Vamos construir algo relevante?</h2>
@@ -876,18 +876,18 @@ a:focus-visible, button:focus-visible { outline: 2px solid rgba(251, 191, 36, 0.
         Estou aberto a oportunidades em desenvolvimento de software, projetos Full Stack e desafios envolvendo sistemas, integrações e automação.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 items-center justify-center mb-8">
-        <a href="mailto:msilvagino@gmail.com" class="inline-flex items-center gap-2 font-semibold text-black bg-gradient-to-r from-amber-400 to-orange-400 rounded-full px-6 py-3 hover:opacity-90 transition">
-          Entrar em contato
+        <a href="mailto:msilvagino@gmail.com" class="relative z-20 inline-flex items-center gap-2 font-semibold text-black bg-gradient-to-r from-amber-400 to-orange-400 rounded-full px-6 py-3 hover:opacity-90 transition">
+          msilvagino@gmail.com
           <i aria-hidden="true" data-lucide="mail" class="w-4 h-4"></i>
         </a>
-        <a href="https://www.linkedin.com/in/matheus-silva-gino-92a398263" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white/20 text-white bg-white/5 rounded-full px-6 py-3 hover:bg-white/10 transition">
-          LinkedIn ↗
-          <i aria-hidden="true" data-lucide="linkedin" class="w-4 h-4"></i>
+        <a href="tel:+5511992689439" class="relative z-20 inline-flex items-center gap-2 border border-white/20 text-white bg-white/5 rounded-full px-6 py-3 hover:bg-white/10 transition">
+          +55 11 99268-9439
+          <i aria-hidden="true" data-lucide="phone" class="w-4 h-4"></i>
         </a>
       </div>
       <div class="flex justify-center gap-6 text-white/60 border-t border-white/10 pt-6">
-        <a href="https://www.linkedin.com/in/matheus-silva-gino-92a398263" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center gap-2"><i aria-hidden="true" data-lucide="linkedin" class="w-5 h-5"></i> LinkedIn</a>
-        <a href="https://github.com/MatheusGino71" target="_blank" rel="noopener noreferrer" class="hover:text-white transition flex items-center gap-2"><i aria-hidden="true" data-lucide="github" class="w-5 h-5"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/matheus-silva-gino-92a398263" target="_blank" rel="noopener noreferrer" class="relative z-20 hover:text-white transition flex items-center gap-2"><i aria-hidden="true" data-lucide="linkedin" class="w-5 h-5"></i> LinkedIn</a>
+        <a href="https://github.com/MatheusGino71" target="_blank" rel="noopener noreferrer" class="relative z-20 hover:text-white transition flex items-center gap-2"><i aria-hidden="true" data-lucide="github" class="w-5 h-5"></i> GitHub</a>
       </div>
     </div>
   </div>
